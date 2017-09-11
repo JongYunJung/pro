@@ -1,6 +1,7 @@
 import java.util.*;
 import java.io.FileInputStream;
 
+
 public class Solution {
 	static int V;
 	static int E;
@@ -9,8 +10,11 @@ public class Solution {
 	static int last;
 	static int [][] Q;
 	static int [] t;
+	
+
+	
 	public static void main(String[] args) throws Exception{
-		System.setIn(new FileInputStream("input.txt"));
+		System.setIn(new FileInputStream("Text.txt"));
 		Scanner sc = new Scanner(System.in);
 		
 		int T = sc.nextInt();
@@ -18,6 +22,7 @@ public class Solution {
 		{
 			V = sc.nextInt();
 			E = sc.nextInt();
+
 			mst = new int[V+1];
 			last = 0;
 			Q = new int[E+1][3];
@@ -40,27 +45,29 @@ public class Solution {
 		int sum = 0;
 		for(int i =0 ; i<=V; i++)
 			mst[i]= i; // 각자 대표 노드
-		while(last>0)
+		int cnt = 0;
+		while(cnt < V)
 		{
 			deQ();
-			int c0 = t[0];
-			// 대표원소 조사
-			while(mst[c0]!=c0)
-			{
-				c0=mst[c0];
-			}
-			int c1 = t[1];
-			while(mst[c1]!=c1)
-			{
-				c1=mst[c1];
-			}
-			if(c0!=c1) //대표원소가 다르면
+			int c0 = rep(t[0]);
+			int c1 = rep(t[1]);
+			if( c0 != c1) //대표원소가 다르면
 			{
 				mst[c1] = c0; // mst에 추가
 				sum+=t[2]; // 비용 추가
+				cnt++;
 			}
 		}
 		return sum;
+	}
+	
+	public static int rep(int n)
+	{
+		while(mst[n]!=n)
+		{
+			n = mst[n];
+		}
+		return n;
 	}
 	public static void enQ(int n1, int n2, int w)
 	{
