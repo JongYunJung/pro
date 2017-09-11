@@ -18,7 +18,6 @@ public class Solution {
 		{
 			V = sc.nextInt();
 			E = sc.nextInt();
-			adj = new int[V+1][V+1];
 			mst = new int[V+1];
 			last = 0;
 			Q = new int[E+1][3];
