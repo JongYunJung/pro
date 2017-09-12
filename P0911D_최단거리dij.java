@@ -46,6 +46,39 @@ public class Solution {
 			System.out.println("#"+tc+" "+d[V]);	
 		}
 	}
+	// 단순반복
+	public static void dij2()
+	{
+		u[0] = 1;
+		for(int i=0; i<=V; i++)
+			d[i] = adj[0][i];
+		int cnt = 0;
+		while(cnt<V)
+		{
+			// u[i] == 0 이고 d[i]가 최소인 i찾기..
+			int t = 0;
+			int minV = Integer.MAX_VALUE;
+			for(int i=0; i<=V; i++)
+			{
+				if(u[i]==0 && d[i]<minV)
+				{
+					minV = d[i];
+					t = i;
+				}
+			}
+			// 새로운 경유지 결정
+			u[t] = 1;
+			for(int i=0; i<=V; i++)
+			{
+				if(adj[t][i]!=0 && adj[t][i]!=Integer.MAX_VALUE)
+				{
+					d[i] = d[i]>(d[t]+adj[t][i])?(d[t]+adj[t][i]):d[i];
+				}
+			}
+			
+			cnt++;
+		}
+	}
 	
 	public static void dij()
 	{
