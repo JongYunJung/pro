@@ -28,8 +28,7 @@ public class Solution {
 				adj[n1][n2] = 1; // 
 				ind[n2]++; // 진입차수 계산
 			}
-			coin[1] = 1;
-			coin[V] = 1;
+
 			int r = tps();
 			System.out.println("#"+tc+" " +r);
 		}
