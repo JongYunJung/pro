@@ -35,6 +35,7 @@ public class Solution {
 			e[i][1] = n2;
 		}
 		find(0, K);
+		find2(0, K);
 	}
 	public static void find(int n, int k)
 	{
@@ -83,6 +84,49 @@ public class Solution {
 					sel[e[n][1]] = 0;
 					unsel[e[n][0]] = 0;
 				}
+			}
+		}
+	}
+	public static void find2(int n, int k)
+	{
+		if(n==k)
+		{
+			for(int i=1; i<=100; i++)
+			{
+				if(sel[i]==1)
+					System.out.print(i+" ");
+			}
+			System.out.println();
+		}
+		else
+		{
+			if(sel[e[n][0]] == 1 || sel[e[n][1]]==2)
+			{
+				sel[e[n][0]] = 1;
+				sel[e[n][1]] = 2;
+				find2(n+1, k);
+				sel[e[n][0]] = 0;
+				sel[e[n][1]] = 0;
+			}
+			else if(sel[e[n][0]]==2 || sel[e[n][1]] == 1)
+			{
+				sel[e[n][0]] = 2;
+				sel[e[n][1]] = 1;
+				find2(n+1, k);
+				sel[e[n][0]] = 0;
+				sel[e[n][1]] = 0;
+			}
+			else if( sel[e[n][0]]==0 && sel[e[n][1]] == 0)
+			{
+					sel[e[n][0]] = 1;
+					sel[e[n][1]] = 2;
+					find2(n+1, k);
+					sel[e[n][0]] = 2;
+					sel[e[n][1]] = 1;
+					find2(n+1, k);
+					sel[e[n][0]] = 0;
+					sel[e[n][1]] = 0;
+			
 			}
 		}
 	}
