@@ -31,15 +31,13 @@ public class Solution {
 		{
 			for(int j = 1; j<=M; j++)
 			{
-				for(int k=1; k<j;k++)
+				for(int k=1; k<=3;k++)
 				{
-					if(A[i][k]==j-k)
-						D[i][j] += D[i][k];
-				}
-				for(int k=1; k<i;k++)
-				{
-					if(A[k][j]==i-k)
-						D[i][j] += D[k][j];
+					if(j-k>0 && A[i][j-k]==k)
+						D[i][j] += D[i][j-k];
+				
+					if(i-k>0 && A[i-k][j]==k)
+						D[i][j] += D[i-k][j];
 				}
 			}
 		}
