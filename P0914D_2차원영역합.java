@@ -22,7 +22,7 @@ public class Solution {
 					m[i][j]= (k++)%10+1;
 				}
 			}
-			d[1][1] = m[1][1];
+			//d[1][1] = m[1][1];
 			for(int i=1; i<=N; i++)
 			{
 				for(int j=1; j<=N; j++)
